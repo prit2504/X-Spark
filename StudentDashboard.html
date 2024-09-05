@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=>, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+     <!--Header section-->
+
+
+  <section class="dashboard-section">
+    <div class="container">
+        <h1>welcome,<%= user.name %>!</h1>
+
+        <div class="card-container">
+            <div class="card">
+                <h3>Submit a Problem</h3>
+                <p>Need help? Submit your problem and receive expert advice.</p>
+                <a href="/submit-problem/<%= user._id %>">Submit Problem</a>
+            </div>
+
+            <!-- <div class="card">
+                <h3>Get Expert Help</h3>
+                <p>Connect with an expert in real-time to solve your doubts.</p>
+                <a href="/expert-help/<%= user._id %>">Expert Help</a>
+            </div> -->
+
+            <div class="card">
+                <h3>Join Topic-Specific Chat Room</h3>
+                <p>Discuss specific topics with a community of learners and experts.</p>
+                <a href="/chat-rooms/<%= user._id %>">Join Chat Room</a>
+            </div>        
+
+            <div class="card">
+                <h3>View Solved Problems</h3>
+                <p>Explore answer of questions asked by you </p>
+                <a href="/view-solved-problems/<%= user._id %>">View Solved Problems</a>
+            </div>
+
+            <div class="card">
+                <h3>Community post</h3>
+                <p>Post To Community </p>
+                <a href="/community/<%=user._id%>">">Community Posts</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+</body>
+</html>

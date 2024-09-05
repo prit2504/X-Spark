@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Expert Dashboard</title>
+    <link rel="stylesheet" href="/styleED.css">
+</head>
+
+<body>
+    <div class="dashboard-section">
+        <div class="container">
+            <h1>Welcome, <%= user.username %>!</h1>
+
+            <h2>Expert Dashboard</h2>
+            <div class="card-container">
+                <div class="card">
+                    <a href="/answer-problem/<%= user._id %>">
+                        <h3>Answer Assigned Questions</h3>
+                    </a>
+                </div>
+                <div class="card">
+                    <a href="/chat-rooms/<%= user._id %>">
+                        <h3>Join Topic-Specific Chat Room</h3>
+                    </a>
+                </div>
+                <!-- <div class="card">
+                    <a href="/post-community-question/<%= user._id %>">Post a Community Question</a>
+                        <h3>Post a Question</h3>
+                    </a>
+                </div>
+                <div class="card">
+                    views/expertDashboard.ejs -->
+                    <!-- <a href="/view-community-questions/<%= user._id %>">View and Answer Community Questions</a>
+
+                    <h3>View Other Questions</h3>
+                    </a>
+                </div> -->
+
+                <div class="card">
+                    <a href="/community/<%= user._id %>">Community Posts</a>
+
+
+                    <h3>Community Post</h3>
+                    </a>
+                </div>
+            </div>
+
+            <h3>Unassigned Problems</h3>
+            <ul class="problem-list">
+                <% problems.forEach(problem=> { %>
+                    <li class="problem-card">
+                        <p><strong>Subject:</strong>
+                            <%= problem.subject %>
+                        </p>
+                        <p><strong>Topic:</strong>
+                            <%= problem.topic %>
+                        </p>
+                        <p class="description"><strong>Description:</strong>
+                            <%= problem.description %>
+                        </p>
+                        <form action="/assign-problem/<%= problem._id %>" method="POST">
+                            <input type="hidden" name="expertId" value="<%= user._id %>">
+                            <button type="submit">Assign to me</button>
+                        </form>
+                    </li>
+                    <% }) %>
+            </ul>
+        </div>
+    </div>
+</body>
+
+</html>
