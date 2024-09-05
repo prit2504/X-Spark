@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Select a Chat Room</title>
+    <link rel="stylesheet" href="/CRs.css">
+</head>
+<body>
+    <section class="chat-section">
+        <div class="container">
+            <h1>Select chart room</h1>
+            <ul class="chat-room-list">
+                <% topics.forEach(topic => { %>
+                    <li class="chat-room-card">
+                        <a href="/chat-room/<%= user._id %>?room=<%= topic %>" class="chat-room-link">
+                            <%= topic%> Chat Room
+                        </a>
+                    </li>
+                <% }) %>
+            </ul>
+        </div>
+    </section>
+</body>
+</html>
