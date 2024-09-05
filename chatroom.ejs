@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= room %> Chat Room</title>
+    <link rel="stylesheet" href="/CR.css">
+</head>
+<body>
+ <!-- views/chatRoom.ejs -->
+<h1><%= room %> Chat Room</h1>
+
+<div id="chat-messages"></div>
+<div id="notifications"></div> <!-- Notification area -->
+
+<!-- Chat form -->
+<form id="chat-form">
+  <input id="msg" type="text" placeholder="Enter message" required autocomplete="off">
+  <button type="submit">Send</button>
+</form>
+
+<!-- Question form -->
+<form id="question-form">
+  <input id="question" type="text" placeholder="Enter your question" required autocomplete="off">
+  <button type="submit">Post Question</button>
+</form>
+
+<!-- private-message-form -->
+<form id="private-message-form">
+  <input id="private-user" type="text" placeholder="Username">
+  <input id="private-msg" type="text" placeholder="Enter private message">
+  <button type="submit">Send Private Message</button>
+</form>
+
+<script src="/socket.io/socket.io.js"></script>
+<script>
+  const socket = io();
+  const name = "<%= user.name %>";
+  const room = "<%= room %>";
+
+  socket.emit('joinRoom', { name, room });
+
+  // Display messages from the server
+  socket.on('message', message => {
+    const div = document.createElement('div');
+    div.classList.add('message');
+    div.innerText = message;
+    document.getElementById('chat-messages').appendChild(div);
+  });
+
+  // Display notifications from the server
+  socket.on('notification', notification => {
+    const div = document.createElement('div');
+    div.classList.add('notification');
+    div.innerText = notification;
+    document.getElementById('notifications').appendChild(div);
+  });
+
+  document.getElementById('chat-form').addEventListener('submit', (e) => {
+    e.preventDefault();
+    const msg = e.target.elements.msg.value;
+    socket.emit('chatMessage', msg);
+    e.target.elements.msg.value = '';
+    e.target.elements.msg.focus();
+  });
+
+  document.getElementById('question-form').addEventListener('submit', (e) => {
+    e.preventDefault();
+    const question = e.target.elements.question.value;
+    socket.emit('postQuestion', question);
+    e.target.elements.question.value = '';
+    e.target.elements.question.focus();
+  });
+</script>
+
+<script>
+
+
+
+  // Handle private message form submission
+  document.getElementById('private-message-form').addEventListener('submit', (e) => {
+    e.preventDefault();
+    const to = e.target.elements['private-user'].value;
+    const msg = e.target.elements['private-msg'].value;
+    socket.emit('privateMessage', { to, msg });
+    e.target.elements['private-user'].value = '';
+    e.target.elements['private-msg'].value = '';
+  });
+</script>
+
+</body>
+</html>
