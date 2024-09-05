@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Expert Details</title>
+    <link rel="stylesheet" href="/styleEx.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">
+                <h1><a href="/">X Spark 0.1</a></h1>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="/index">Home</a></li>
+                    <li><a href="/login">Login</a></li>
+                    <li><a href="/register">Register</a></li>
+                    <li><a href="/index#features">Features</a></li>
+                    <li><a href="/index#contact">Contact</a></li>
+                </ul>
+            </nav>
+            <div class="mobile-menu">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </header>
+
+    <section class="auth-section">
+        <div class="container">
+            <div class="b">
+                <div class="wrapper">
+                    <h1>Expert Details</h1>
+                    <form action="/save-expert-details/<%= user._id %>" method="POST">
+                        <div class="input-box">
+                            <label for="subjects">Subjects:</label>
+                            <input type="text" id="subjects" name="subjects" required>
+                        </div>
+
+                        <div class="input-box">
+                            <label for="topics">Topics:</label>
+                            <input type="text" id="topics" name="topics" required>
+                        </div>
+
+                        <div class="input-box">
+                            <label for="experience">Years of Experience:</label>
+                            <input type="number" id="experience" name="experience" required>
+                        </div>
+
+                        <button type="submit" class="btn">Save</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy;2024 X Spark 0.1. All Rights Reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>
