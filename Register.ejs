@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register | DoubtResolution</title>
+    <link rel="stylesheet" href="/styler.css">
+</head>
+
+<body>
+
+    <!-- Registration Section -->
+    <section class="auth-section">
+        <div class="container">
+            <div class="b">
+                <div class="wrapper">
+                    <form action="/register" method="POST">
+                        <h1>Register</h1>
+                        <div class="input-box">
+                            <input type="text" name="name" id="name" placeholder="Username" required>
+                        </div>
+                        <div class="input-box">
+                            <input type="email" name="email" id="email" placeholder="E-mail" required>
+                        </div>
+                        <div class="input-box">
+                            <input type="password" name="password" id="password" placeholder="Password" required>
+                        </div>
+                        <div class="role">
+                            <label for="role">Role:</label>
+                            <select name="role" id="role" required>
+                                <option value="student">Student</option>
+                                <option value="expert">Expert</option>
+                            </select>
+                            <!-- <div id="subjects" style="display:none;">
+                                <label for="subject">Subjects:</label>
+                                <input type="text" name="subjects" id="subject" placeholder="Separate with commas">
+                            </div> -->
+                        </div>
+                        <button class="btn" type="submit">Register</button>
+                        <div class="acc">
+                            <a href="/login">Already have an account? Login now</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer Section -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 X Spark 0.1. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+
+</body>
+
+</html>
